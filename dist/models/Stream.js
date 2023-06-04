@@ -11,11 +11,13 @@ class Stream {
     agregarCategoria(categoria) {
         this.categorias.push(categoria);
     }
-    eliminarCategoria(categoria) {
-        const indice = this.categorias.indexOf(categoria);
-        if (indice !== -1) {
-            this.categorias.splice(indice, 1);
-        }
+    //Implementaciones
+    mostrarDetalleStream() {
+        console.log("Detalle del Stream:");
+        console.log("Categorías:");
+        this.categorias.forEach((categoria) => {
+            console.log("- " + categoria.obtenerNombre());
+        });
     }
 }
 exports.Stream = Stream;

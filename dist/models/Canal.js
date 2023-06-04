@@ -20,5 +20,13 @@ class Canal {
     obtenerDescripcion() {
         return this.descripcion;
     }
+    //Implementaciones
+    mostrarDetalle() {
+        console.log("Detalle del Canal:");
+        console.log("Nombre: " + this.nombre);
+        console.log("Banner: " + this.banner);
+        console.log("Streamer: " + this.streamer.obtenerNickname());
+        console.log("Descripción: " + this.descripcion);
+    }
 }
 exports.Canal = Canal;

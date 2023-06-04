@@ -7,6 +7,7 @@ class Streamer {
         this.descripcion = descripcion;
         this.redesSociales = [];
         this.streams = [];
+        this.canales = [];
     }
     obtenerNickname() {
         return this.nickname;
@@ -23,14 +24,27 @@ class Streamer {
     obtenerStreams() {
         return this.streams;
     }
-    agregarStream(stream) {
+    //Implementaciones
+    mostrarDetalleStreamer() {
+        console.log("Detalles del Streamer:");
+        console.log("Nickname: " + this.obtenerNickname());
+        console.log("Descripción: " + this.obtenerDescripcion());
+        console.log("Redes Sociales:");
+        this.obtenerRedesSociales().forEach((redSocial) => {
+            console.log("- " + redSocial.obtenerNombre() + ": " + redSocial.obtenerUrl());
+        });
+    }
+    mostrarListadoStreams() {
+        console.log("Listado de Streams del Streamer " + this.obtenerNickname() + ":");
+        this.obtenerStreams().forEach((stream) => {
+            console.log("- Stream ID: " + stream.obtenerCategorias());
+        });
+    }
+    agregarStreamaStreamer(stream) {
         this.streams.push(stream);
     }
-    eliminarStream(stream) {
-        const indice = this.streams.indexOf(stream);
-        if (indice !== -1) {
-            this.streams.splice(indice, 1);
-        }
+    agregarCanalaStreamer(canal) {
+        this.canales.push(canal);
     }
 }
 exports.Streamer = Streamer;

@@ -8,6 +8,7 @@ class Plataforma {
         this.descripcion = descripcion;
         this.empresaPatrocinadora = empresaPatrocinadora;
         this.canales = [];
+        this.streamers = [];
     }
     obtenerNombre() {
         return this.nombre;
@@ -24,14 +25,41 @@ class Plataforma {
     obtenerCanales() {
         return this.canales;
     }
+    //Implementaciones
+    static mostrarListadoPlataformas(plataformas) {
+        console.log("Listado de Plataformas:");
+        plataformas.forEach((plataforma) => {
+            console.log("- " + plataforma.obtenerNombre());
+        });
+    }
+    mostrarDetallePlataforma() {
+        console.log("Detalles de la Plataforma:");
+        console.log("Nombre: " + this.obtenerNombre());
+        console.log("Logo: " + this.obtenerLogo());
+        console.log("Descripción: " + this.obtenerDescripcion());
+        console.log("Empresa Patrocinadora: " + this.obtenerEmpresaPatrocinadora().obtenerNombre());
+    }
+    mostrarListadoCanales() {
+        console.log("Listado de Canales de la Plataforma " + this.obtenerNombre() + ":");
+        this.obtenerCanales().forEach((canal) => {
+            console.log("- " + canal.obtenerNombre());
+        });
+    }
+    mostrarListadoStreamers() {
+        console.log("Listado de Streamers de la Plataforma " + this.obtenerNombre() + ":");
+        const streamers = new Set(); // Utilizamos un Set para evitar duplicados
+        this.obtenerCanales().forEach((canal) => {
+            streamers.add(canal.obtenerStreamer());
+        });
+        streamers.forEach((streamer) => {
+            console.log("- " + streamer.obtenerNickname());
+        });
+    }
     agregarCanal(canal) {
         this.canales.push(canal);
     }
-    eliminarCanal(canal) {
-        const indice = this.canales.indexOf(canal);
-        if (indice !== -1) {
-            this.canales.splice(indice, 1);
-        }
+    agregarStreamer(streamer) {
+        this.streamers.push(streamer);
     }
 }
 exports.Plataforma = Plataforma;
